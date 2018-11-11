@@ -1,0 +1,26 @@
+Command List:
+
+/add - Add an account to the bot.
+Format:
+/add account password
+If you have two-factor enabled, the bot will prompt you to send the code.
+
+/newtarget - Change like target.
+Format:
+/newtarget account:target
+
+You can have one target for every account you have registered.
+
+/listaccounts - List accounts/targets you have registered the bot (and are currently authenticated).
+Format:
+/listaccounts
+
+/droptype - Change account drop type.
+Format:
+/droptype account:slow/fast
+
+Change drop type to/from burst mode (likes all at once) or slow (likes over 15 minutes). Note: 'account' is the account you have registered with the bot, not your target.
+
+/remove - Remove an account.
+Format:
+/remove account
