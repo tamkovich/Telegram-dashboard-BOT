@@ -1,6 +1,5 @@
 from flask import Flask, request, json
 
-from logic_application.database import push_database, update_user_state
 from settings import *
 import messageHandler
 
