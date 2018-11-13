@@ -12,19 +12,7 @@ def test_create_user():
 
 def test_create_message():
     bob = UserTg.where(user_id='20490124').first()
-    _msg = Message.create(body='Привет Мир!', usertg=bob, branch='dec5')
-    session.commit()
-
-
-def test_update_user():
-    bob = UserTg.where(user_id='20490124').first()
-    bob.branch = 'licvidation'
-    session.commit()
-
-
-def test_update_message():
-    bob = Message.query.first()
-    bob.branch = 'licvidation'
+    _msg = Message.create(body='Hello world!', usertg=bob)
     session.commit()
 
 

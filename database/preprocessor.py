@@ -23,7 +23,7 @@ def load_engine(echo: bool=False):
         config = parse_yaml(CONFIG['dir'], CONFIG['filename'])
     else:
         pass
-    database = "mysql://{0}:{1}@{2}/{3}?charset=utf8".format(
+    database = "postgresql+psycopg2://{0}:{1}@{2}/{3}".format(
         config['user'], config['password'], config['host'], config['database']
     )
-    return sa.create_engine(database, echo=echo, encoding='utf-8')
+    return sa.create_engine(database, echo=echo)

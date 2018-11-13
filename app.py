@@ -1,5 +1,6 @@
 from flask import Flask, request, json
 
+from logic_application.database import push_database
 from settings import *
 import messageHandler
 
@@ -15,6 +16,7 @@ def hello_world():
 def telegram():
     data = json.loads(request.data)
     if data.get("message"):
+        push_database(data["message"])
         messageHandler.create_answer(
             data["message"], config['app']['tg']['token']
         )
