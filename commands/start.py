@@ -3,9 +3,9 @@ from private.parse import parse_str
 import command_system
 
 
-def start(*args, **kwargs):
+def start(step, *args, **kwargs):
     message = parse_str('data_str', 'start.txt')
-    return message, [], [], []
+    return (message, [], [], []), step
 
 
 info_command = command_system.Command()

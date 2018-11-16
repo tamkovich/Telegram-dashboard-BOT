@@ -10,6 +10,21 @@ def push_database(data: dict):
         body=data.get('text', ''),
         usertg=user,
     )
+    return user.step
+
+
+def update_user_step(**kwargs):
+    """
+    Updates a new user by params in kwargs
+    :param kwargs: <dict> kwargs['user_id'] , kwargs['step'] and all columns in the table usertg
+    :return: None
+    """
+    assert kwargs.get('user_id'), f'This func requires `user_id` key in kwargs,' \
+                                  f' because it will select user by this value. Received {kwargs}'
+    user = UserTg.where(user_id=kwargs['user_id']).first()
+    if kwargs.get('step'):
+        user.step = kwargs['step']
+        session.commit()
 
 
 def create_user(**kwargs):

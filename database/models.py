@@ -10,6 +10,8 @@ class UserTg(BaseModel):
     id = sa.Column(sa.Integer, primary_key=True)
     user_id = sa.Column(sa.String(30), sa.UniqueConstraint())
 
+    step = sa.Column(sa.Integer, default=0)
+
 
 class Message(BaseModel):
     __tablename__ = 'message'

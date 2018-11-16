@@ -1,0 +1,45 @@
+[post]http://<ip>:<port>/RCS/addAccount/start
+# input example
+{
+    'accountName': 'hensonblanche',
+    'description': 'hensonblanche',
+    'useProxy': 'true',
+    'tag': '100k',
+    'username': 'hensonblanche',
+    'password': 'Scegbjo756'
+}
+# output example
+{'success': 'running'}
+{'error': 'Task still running'}
+
+[get]http://<ip>:<port>/RCS/addAccount/query
+# output example
+{'success': 'addAccount'}
+{'error': 'Task still running'}
+{'error': 'No task running'}
+{'error': 'time out'}
+{'error': 'NA'}: Some error happened. Like invalid credentials or no internet
+
+[post]http://<ip>:<port>/RCS/verify/start
+# input example
+{
+    'code': '462571',
+}
+# output example
+{'success': 'running'}
+{'error': 'Task still running'}
+{'error': 'invalid status'}
+
+[get]http://<ip>:<port>/RCS/verify/query
+# output example
+{'success': 'verify', 'follower': <number>}
+{'error': 'Task still running'}
+{'error': 'No task running'}
+{'error': 'time out'}
+{'error': 'NA'}: Some error happened. Like invalid credentials or no internet or incorrect code
+
+How to use:
+1. call addAccount/start to start the add task.
+2. call addAccount/query to check the result until get a success value.
+3. call verify/start with the code in the email to verify the account.
+4. call verify/query to check the result until get a success value.

@@ -1,9 +1,28 @@
 import command_system
 
+from logic_application import api_usage
 
-def add(*args, **kwargs):
-    message = "Not working right now ..."
-    return message, [], [], []
+
+def add(step, msg):
+    step = 0
+    try:
+        username, password = msg.split(':')
+    except ValueError:
+        return ('Invalid message', [], [], []), step
+    data = {
+        'accountName': username,
+        'description': username,
+        'useProxy': 'true',
+        'tag': '100k',
+        'username': username,
+        'password': password
+    }
+    if step == 0:
+        message = api_usage.add_account(data)
+        step = 1
+    else:
+        message = 'You have to finish your last step'
+    return (message, [], [], []), step
 
 
 info_command = command_system.Command()

@@ -1,9 +1,9 @@
 import command_system
 
 
-def droptype(*args, **kwargs):
+def droptype(step, *args, **kwargs):
     message = "Not working right now ..."
-    return message, [], [], []
+    return (message, [], [], []), step
 
 
 info_command = command_system.Command()

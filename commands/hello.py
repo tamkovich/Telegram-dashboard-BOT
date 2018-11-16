@@ -1,9 +1,9 @@
 import command_system
 
 
-def hello(*args, **kwargs):
+def hello(step, *args, **kwargs):
     message = "Hi, how are you!"
-    return message, [], [], []
+    return (message, [], [], []), step
 
 
 hello_command = command_system.Command()

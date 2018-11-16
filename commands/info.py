@@ -1,11 +1,11 @@
 import command_system
 
 
-def info(*args, **kwargs):
+def info(step, *args, **kwargs):
     message = ""
     for c in command_system.command_list:
         message += c.keys[0] + " - " + c.description + "\n"
-    return message, [], [], []
+    return (message, [], [], []), step
 
 
 info_command = command_system.Command()
