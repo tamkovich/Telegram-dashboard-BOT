@@ -35,30 +35,32 @@ def _request(url, data=None, method='GET'):
 def add_account(data):
     _ = _request(URL.format(IP, PORT, URIS['add_start']), data, 'POST')
     print('===GOT===')
-    while True:
+    for _ in range(20):
         response = _request(URL.format(IP, PORT, URIS['add_query']))
         print('===GOT2===')
         if response.get('success'):
-            return 'please entry the code'
+            return 'please entry the code', 1
         elif response.get('error'):
             if ERROR_RESPONSES[response.get('error')]:
                 time.sleep(2)
             else:
-                return 'Something goes wrong. Please, check your credentials'
+                return 'Something goes wrong. Please, check your credentials', 0
         else:
             raise Exception('InvalidResponse. Error with /addAccount/')
+    return 'please entry the code', 1
 
 
 def verify(data):
     _ = _request(URL.format(IP, PORT, URIS['verify_start']), data, 'POST')
-    while True:
+    for _ in range(20):
         response = _request(URL.format(IP, PORT, URIS['verify_query']))
         if response.get('success'):
-            return 'Successfully added'
+            return 'Successfully added', 0
         elif response.get('error'):
             if ERROR_RESPONSES[response.get('error')]:
                 time.sleep(2)
             else:
-                return 'Something goes wrong. Please, check your credentials'
+                return 'Something goes wrong. Please, check your credentials', 1
         else:
             raise Exception('InvalidResponse. Error with /verify/')
+    return 'please entry the code', 0

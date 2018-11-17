@@ -24,7 +24,7 @@ def test_add_column(table_name, column):
 
 def test_alter_user():
     columns = list()
-    columns.append(sa.Column('step', sa.Integer, default=0))
+    columns.append(sa.Column('step', sa.Integer))
     for column in columns:
         test_add_column(UserTg.__tablename__, column)
 
@@ -48,4 +48,4 @@ def test_clear_tables():
 
 
 if __name__ == '__main__':
-    test_add_column()
+    test_clear_tables()
