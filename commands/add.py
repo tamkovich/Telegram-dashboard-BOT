@@ -18,8 +18,8 @@ def add(step, msg):
         'password': password
     }
     if step == 0:
-        message = api_usage.add_account(data)
-        step = 1
+        message, step = api_usage.add_account(data)
+        
     else:
         message = 'You have to finish your last step'
     return (message, [], [], []), step
